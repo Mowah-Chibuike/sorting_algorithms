@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 /**
  * swap - swap two elements in an array
@@ -24,10 +25,16 @@ void swap(int *a, int *b)
 void bubble_sort(int *array, size_t size)
 {
 	size_t i, j;
-	int swapped;
+	int swapped, temp;
 
 	if (size < 2)
 		return;
+	if (size == 2 && array[0] > array[1])
+	{
+		temp = array[0];
+		array[0] = array[1];
+		array[1] = temp;
+	}
 	for (i = 0; i < size; i++)
 	{
 		swapped = 0;
