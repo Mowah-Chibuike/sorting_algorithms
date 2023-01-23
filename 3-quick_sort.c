@@ -21,13 +21,14 @@ void swap(int *a, int *b)
  * @start: start of the part of the array to be partitioned
  * @end: end of the part of the array to be partitioned
  * @size: size of the array
+ *
+ * Return: the index of the pivot after partitioning
  */
 int Partition(int *array, int start, int end, int size)
 {
 	int i, pIndex;
 	int pivot;
 
-	(void)size;
 	pIndex = start;
 	pivot = array[end];
 	for (i = start; i < end; i++)
@@ -43,7 +44,7 @@ int Partition(int *array, int start, int end, int size)
 	swap(&array[pIndex], &array[end]);
 	if (pivot != array[end])
 		print_array(array, size);
-	return pIndex;
+	return (pIndex);
 }
 
 /**
