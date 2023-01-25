@@ -108,4 +108,5 @@ void merge_sort(int *array, size_t size)
 	if (new == NULL)
 		return;
 	TopDownSplitMerge(new, 0, (int)size, array);
+	free(new);
 }
