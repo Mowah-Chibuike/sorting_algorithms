@@ -51,28 +51,29 @@ int *copy_array(int *array, size_t size)
  */
 void count_sort(int *array, size_t size, int position, int *output)
 {
-	int count[10], index, i, len = (int)size;
+	int count[10], index, i;
 
+	(void)output;
 	for (i = 0; i < 10; i++)
 		count[i] = 0;
 
-	for (i = len - 1; i >= 0; i--)
+	for (i = (int)(size - 1); i >= 0; i--)
 	{
 		index = (array[i] / position) % 10;
 		count[index] += 1;
 	}
 
-	for (i = 1; i < len; i++)
+	for (i = 1; i < 10; i++)
 		count[i] += count[i - 1];
 
-	for (i = len - 1; i >= 0; i--)
+	for (i = (int)(size - 1); i >= 0; i--)
 	{
 		index = (array[i] / position) % 10;
 		count[index] -= 1;
 		output[count[index]] = array[i];
 	}
 
-	for (i = 0; i < len; i++)
+	for (i = 0; i < (int)size; i++)
 		array[i] = output[i];
 }
 
@@ -90,7 +91,6 @@ void radix_sort(int *array, size_t size)
 	output = copy_array(array, size);
 	if (output == NULL)
 		return;
-
 	for (pos = 1; max / pos > 0; pos *= 10)
 	{
 		count_sort(array, size, pos, output);
