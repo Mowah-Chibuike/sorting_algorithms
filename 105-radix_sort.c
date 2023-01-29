@@ -87,6 +87,8 @@ void radix_sort(int *array, size_t size)
 {
 	int max, pos, *output;
 
+	if (size < 2)
+		return;
 	max = getMax(array, size);
 	output = copy_array(array, size);
 	if (output == NULL)
